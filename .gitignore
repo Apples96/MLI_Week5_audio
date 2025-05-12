@@ -1,0 +1,8 @@
+__pycache__
+data
+MLIWeek5venv
+train
+models
+results
+.env
+.DS_Store
