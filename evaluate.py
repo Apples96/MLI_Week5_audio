@@ -12,7 +12,7 @@ from model import UrbanSoundClassifier
 from data import UrbanSoundDataset
 from datetime import datetime
 
-def load_model(model_path, max_seq_length=1501):
+def load_model(model_path, max_seq_length=1502):
     """
     Load a trained model from disk
     
@@ -38,7 +38,7 @@ def load_model(model_path, max_seq_length=1501):
     return model, device
 
 def evaluate_random_examples(model_path, pickle_path="./data/processed_urbansound8k.pkl", 
-                            test_fold=1, num_examples=5, max_seq_length=1501):
+                            test_fold=2, num_examples=5, max_seq_length=1502):
     """
     Evaluate a trained model on random examples from the test set
     
@@ -102,7 +102,7 @@ def evaluate_random_examples(model_path, pickle_path="./data/processed_urbansoun
     return correct / num_examples
 
 def run_fold_evaluation(model_path, pickle_path="./data/processed_urbansound8k.pkl", 
-                       test_fold=1, batch_size=32, max_seq_length=1501, 
+                       test_fold=2, batch_size=32, max_seq_length=1502, 
                        save_results=True, plot_cm=True):
     """
     Run a complete evaluation on a specific fold
@@ -204,7 +204,7 @@ def run_fold_evaluation(model_path, pickle_path="./data/processed_urbansound8k.p
     return accuracy
 
 def run_all_folds_evaluation(models_dir, pickle_path="./data/processed_urbansound8k.pkl", 
-                            batch_size=32, max_seq_length=1501):
+                            batch_size=32, max_seq_length=1502):
     """
     Evaluate models for all folds and compute the average accuracy
     
@@ -300,11 +300,11 @@ if __name__ == "__main__":
     # You can call the functions individually:
     
     # Option 1: Evaluate random examples from a specific fold
-    model_path = "models/urban_sound_classifier_fold1.pt"
+    model_path = "models/urban_sound_bigclassifier_fold10.pt"
     evaluate_random_examples(model_path, test_fold=10, num_examples=5)
     
     # Option 2: Run full evaluation on a specific fold
-    model_path = "models/urban_sound_classifier_fold1.pt"
+    model_path = "models/urban_sound_bigclassifier_fold10.pt"
     run_fold_evaluation(model_path, test_fold=10)
     
     # Option 3: Run 10-fold cross-validation evaluation (recommended)
