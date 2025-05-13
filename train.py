@@ -238,9 +238,9 @@ def run_hyperparameter_sweep():
         },
         'parameters': {
             'learning_rate': {
+                'distribution': 'log_uniform_values',  
                 'min': 0.00001,
-                'max': 0.001,
-                'distribution': 'log_uniform'
+                'max': 0.001
             },
             'batch_size': {
                 'values': [16, 32, 64]
@@ -253,6 +253,21 @@ def run_hyperparameter_sweep():
             },
             'embed_dim': {
                 'values': [256, 384, 512]
+            },
+            'max_seq_length': {
+                'value': 1502 
+            },
+            'epochs': {
+                'value': 3  
+            },
+            'model_type': {
+                'value': "UrbanSoundClassifier"
+            },
+            'test_fold': {
+                'value': 10  
+            },
+            'optimizer': {
+                'value': "Adam"  
             }
         }
     }
@@ -272,12 +287,12 @@ def run_hyperparameter_sweep():
         train_urban_sound_classifier(test_fold=10, config=config)
     
     # Run the sweep
-    wandb.agent(sweep_id, train_sweep, count=10)  # Run 10 experiments
+    wandb.agent(sweep_id, train_sweep, count=5)  # Run 5 experiments
 
 
 if __name__ == "__main__":
     # For normal training with default parameters
-    train_urban_sound_classifier()
+    # train_urban_sound_classifier()
     
     # For training while testing a hyperparameter sweep
-    # run_hyperparameter_sweep()
+    run_hyperparameter_sweep()

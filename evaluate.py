@@ -31,6 +31,7 @@ def load_model(model_path, max_seq_length=1502):
     model.load_state_dict(torch.load(model_path))
     
     # Move model to appropriate device
+    device = 'cuda'
     device = torch.device(device if torch.cuda.is_available() and device == 'cuda' else 'cpu')
     model.to(device)
     model.eval()

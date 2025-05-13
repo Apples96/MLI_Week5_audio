@@ -3,3 +3,4 @@ torchaudio
 librosa
 matplotlib
 datasets
+wandb
